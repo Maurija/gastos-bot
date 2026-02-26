@@ -9,16 +9,14 @@ SCOPES = [
     "https://www.googleapis.com/auth/drive"
 ]
 
-SPREADSHEET_ID = "1I4UGI6rW0tG0kYIhkrAMqtr5Z8X7LKM_IqiSirsXGEo"
+SPREADSHEET_ID = os.getenv("SPREADSHEET_ID")
+CREDS_JSON = os.getenv("GOOGLE_CREDENTIALS")
 
 def get_sheet():
-    # 🔥 Leer credenciales desde variable de entorno
-    creds_json = os.getenv("GOOGLE_CREDENTIALS")
-
-    if not creds_json:
+    if not CREDS_JSON:
         raise Exception("No se encontró GOOGLE_CREDENTIALS en las variables de entorno")
 
-    creds_dict = json.loads(creds_json)
+    creds_dict = json.loads(CREDS_JSON)
 
     creds = Credentials.from_service_account_info(
         creds_dict,
