@@ -2,8 +2,6 @@ import requests
 import os
 from app.config import TELEGRAM_TOKEN
 
-print("Telegram token:", TELEGRAM_TOKEN)
-
 def download_telegram_file(file_id: str) -> str:
     # Obtener file_path
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/getFile?file_id={file_id}"
